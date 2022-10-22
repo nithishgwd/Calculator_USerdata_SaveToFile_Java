@@ -2,24 +2,24 @@ package nithish_221047018;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.time.LocalTime;
 
 interface MyOperations{
-	/** Returns a+b */
+	// Returns a+b 
 	public String add(int a, int b);
 
-	/** Returns a-b */
+	// Returns a-b 
 	public String subtract(int a, int b);
 
-	/** Returns a*b */
+	// Returns a*b 
 	public String multiply(int a, int b);
 	
 	public String division(int a, int b);
 
-	/** Returns minimum of a and b */
+	// Returns minimum of a and b 
 	public String min(int a, int b);
 
 }    
@@ -35,6 +35,7 @@ public class Calculator implements MyOperations{
 			System.out.println("for multiply                : 3");
 			System.out.println("for division                : 4");
 			System.out.println("for minimum of number       : 5");
+			//Asking user type of operation
 			System.out.println("Enter your choice here      :  ");
 			int c = sc.nextInt(); 
 			
@@ -62,18 +63,39 @@ public class Calculator implements MyOperations{
 	    		break;
 	    	}
 	    	sc.close();
+	    	int j;
+	    	String s = "";
+	    	LocalTime i;
 	    	try{
+	    		//Creating Data file
 	    		File file = new File("data.txt");
+	    		//Saving user data without loosing old data
 	    		FileWriter wr = new FileWriter(file, true);
+	    		
+	    		//Time for Reference 
+	    		i=java.time.LocalTime.now();
+	            
+	            wr.write(i.toString());
+	            wr.write("\n");
 	            wr.write(data);
+	            wr.write("\n");
 	            wr.close();
+	            
+	            //Reading the data from file with previous history
+	            FileReader f2r = new FileReader("data.txt");
+	            while((j=f2r.read())!=-1) {
+	                s += (char)j;
+	            }
+	            System.out.println("\nFile data history: \n");
+	            System.out.println(s);
+	            f2r.close();
 	    	}
 	    	catch(Exception e){
 	    		System.out.println("e");
 	    	}
 	    	
             
-            System.out.println(data);
+            //System.out.println(data);
            
 	    }
 	    catch(InputMismatchException e){
