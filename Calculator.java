@@ -61,16 +61,19 @@ public class Calculator implements MyOperations{
 	    	case 5:
 	    		data = cal.min(x, y);
 	    		break;
+	    	default:
+	    		System.out.println("Wrong Choice");
 	    	}
 	    	sc.close();
 	    	int j;
 	    	String s = "";
 	    	LocalTime i;
 	    	try{
-	    		//Creating Data file
-	    		File file = new File("data.txt");
-	    		//Saving user data without loosing old data
-	    		FileWriter wr = new FileWriter(file, true);
+	    		/**Creating Data file
+	    		File file = new File("data.txt");*/
+	    		
+	    		//Saving user data with file without loosing old data
+	    		FileWriter wr = new FileWriter("data.txt", true);
 	    		
 	    		//Time for Reference 
 	    		i=java.time.LocalTime.now();
@@ -91,7 +94,7 @@ public class Calculator implements MyOperations{
 	            f2r.close();
 	    	}
 	    	catch(Exception e){
-	    		System.out.println("e");
+	    		System.out.println("File dosnt exist ");
 	    	}
 	    	
             
@@ -113,22 +116,22 @@ public class Calculator implements MyOperations{
 	public String data;
 
 	public String add(int a, int b) {
-		data = "MyOperations - add " + a + " and " + b + " = " + (a+b)+"\n";
+		data = "MyOperations -> add " + a + " and " + b + " = " + (a+b)+"\n";
 		return data;
     }
 
 	public String subtract(int a, int b) {
-		data = "MyOperations - subtract " + a + " and " + b + " = " + (a-b)+"\n";
+		data = "MyOperations -> subtract " + a + " and " + b + " = " + (a-b)+"\n";
 		return data;
 	}
 
 	public String multiply(int a, int b) {
-		data ="MyOperations - multiply " + a + " and " + b+ " = " + (a*b)+"\n";
+		data ="MyOperations -> multiply " + a + " and " + b+ " = " + (a*b)+"\n";
 		return data;
 	}
 	
 	public String division(int a, int b) {
-		data ="MyOperations - multiply " + a + " and " + b+ " = " + (a/b)+"\n";
+		data ="MyOperations -> multiply " + a + " and " + b+ " = " + (a/b)+"\n";
 		return data;
 	}
 
@@ -139,8 +142,7 @@ public class Calculator implements MyOperations{
 		}
 		else
 			x = b;
-		data = "MyOperations - minimum of " + a + " and " + b+" is "+x+"\n";
+		data = "MyOperations -> minimum of " + a + " and " + b+" is "+x+"\n";
 		return data;
 	}
 }
-
